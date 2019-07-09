@@ -31,10 +31,12 @@
     "compression-webpack-plugin": "^3.0.0",
     "cross-env": "^5.2.0",
     "css-loader": "^3.0.0",
+    "exports-loader": "^0.7.0",
     "file-loader": "^4.0.0",
     "html-webpack-plugin": "^3.2.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
+    "load-grunt-tasks": "^5.0.0",
     "mini-css-extract-plugin": "^0.7.0",
     "node-sass": "^4.12.0",
     "postcss": "^7.0.17",
@@ -42,12 +44,15 @@
     "postcss-pxtorem": "^4.0.1",
     "sass": "^1.22.2",
     "sass-loader": "^7.1.0",
+    "script-loader": "^0.7.2",
     "scss": "^0.2.4",
     "scss-loader": "0.0.1",
     "style-loader": "^0.23.1",
+    "time-grunt": "^2.0.0",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.2",
     "uglifyjs-webpack-plugin": "^2.1.3",
+    "url-loader": "^2.0.1",
     "vue-loader": "^15.7.0",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.35.2",
@@ -58,7 +63,11 @@
   },
   "dependencies": {
     "angular": "^1.7.8",
+    "copy-webpack-plugin": "^5.0.3",
     "jquery": "^3.4.1",
-    "vue": "^2.6.10"
+    "rxjs": "^6.5.2",
+    "sui-mobile": "^0.5.9",
+    "vue": "^2.6.10",
+    "zepto": "^1.2.0"
   }
 }

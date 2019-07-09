@@ -43,6 +43,12 @@ const build_config = merge(base, {
           // cacheGroupKey here is `commons` as the key of the cacheGroup
           chunks: 'all'
         },
+        zepto: {
+          name: 'zepto',
+          test: /[\\/]node_modules[\\/].*zepto/,
+          // cacheGroupKey here is `commons` as the key of the cacheGroup
+          chunks: 'all'
+        },
         jquery: {
           name: 'jquery',
           test: /[\\/]node_modules[\\/].*jquery/,

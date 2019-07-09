@@ -1,7 +1,13 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
 const config = require('../config')
 const utils = require('./utils')
+
+const resolve = function(_path) {
+  return path.resolve(__dirname, '../src/assets/plug', _path)
+}
 
 module.exports = {
   entry: {
@@ -19,6 +25,11 @@ module.exports = {
     }
   },
   module: {
+    // loaders: [
+    //   {
+    //     path
+    //   }
+    // ],
     rules: [
       {
         test: /\.vue$/,
@@ -38,6 +49,11 @@ module.exports = {
           loader: 'babel-loader'
         }
       },
+      // 解决zepto没有按照模块化导入导致的bug
+      {
+        test: /zepto/,
+        loader: 'exports-loader?window.Zepto!script-loader'
+      },
       {
         test: /\.(png|swf|gif|jpe?g)(\?.*)?$/,
         use: {
@@ -49,7 +65,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac|qlv)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
@@ -66,8 +82,22 @@ module.exports = {
       }
     ]
   },
+  externals: {
+    $: 'zepto'
+    // sui: [
+    //   resolve('sui-mobile.css'),
+    //   resolve('sui-mobile.extend.css'),
+    //   resolve('sui-mobile.js'),
+    //   resolve('sui-mobile.extend.js')
+    // ]
+  },
   plugins: [
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new CopyWebpackPlugin([{
+      from: path.resolve(__dirname, '../assets'),
+      to: config.dev.staticPath,
+      ignore: ['.*']
+    }])
   ],
   node: {
     fs: 'empty',

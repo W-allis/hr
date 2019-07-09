@@ -92,6 +92,7 @@ exports.htmls = function(options) {
     filename: `${key}.html`,
     inject: 'body',
 
+    path: path.join(process.env.NODE_ENV === 'production' ? config.build.publicPath : config.dev.publicPath, config.dev.staticPath),
     minify: options.minify,
 
     chunks: [key, 'vendor', 'common']
