@@ -1,4 +1,4 @@
-/*
+
 interface Handler {
   (): any|void
 }
@@ -11,8 +11,43 @@ interface Observer {
 
 const EmptyFunction: Handler = () => {}
 
-class Observe {
+// 操作符， 独立模块
+class Operators {
+  map(shecdule) {
+    // const $shecdule = new Observe()
+    
+    // $shecdule.lift(shecdule, this.$Obv)
 
+    // return $shecdule
+  }
+
+  debounceTime(time: number) {
+    // const $shecdule = new Observe()
+    
+    // $shecdule.lift((function() {
+    //   var timer
+
+    //   return function() {
+    //     clearTimeout(timer)
+    //     timer = setTimeout(function() {
+
+    //     }, time)
+    //   }
+    // })())
+
+    // return $shecdule
+  }
+}
+
+class Observe extends Operators {
+  
+  constructor() {
+    super()
+  }
+
+  lift() {
+    
+  }
 }
 
 class Observable {
@@ -102,34 +137,6 @@ class OnSubscriber {
   }
 }
 
-// 操作符， 独立模块
-class Operators {
-  map(shecdule) {
-    // const $shecdule = new Observe()
-    
-    // $shecdule.lift(shecdule, this.$Obv)
-
-    // return $shecdule
-  }
-
-  debounceTime(time: number) {
-    // const $shecdule = new Observe()
-    
-    // $shecdule.lift((function() {
-    //   var timer
-
-    //   return function() {
-    //     clearTimeout(timer)
-    //     timer = setTimeout(function() {
-
-    //     }, time)
-    //   }
-    // })())
-
-    // return $shecdule
-  }
-}
-
 interface Subscriber {
   subscribe(fn): void
 }
@@ -138,6 +145,8 @@ class Shecdule {
 
 }
 
+Observable.from([1, 2, 3])
+
 // Observable.from([1, 2, 3, 4])
 //   .map(function(value) {
 //     return value + 2
@@ -145,4 +154,3 @@ class Shecdule {
 //   .subscribe(function(res) {
 //     console.log(res)
 //   })
-*/

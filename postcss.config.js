@@ -4,7 +4,7 @@ module.exports = {
 
     }),
     require("postcss-pxtorem")({
-      rootValue: 16,
+      rootValue: 20,
       unitPrecision: 5,
       propList: ['*', '!border-width', '!border', '!letter-spacing'],
       selectorBlackList: [],

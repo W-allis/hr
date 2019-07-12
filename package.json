@@ -33,7 +33,9 @@
     "css-loader": "^3.0.0",
     "exports-loader": "^0.7.0",
     "file-loader": "^4.0.0",
+    "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "html-withimg-loader": "^0.1.16",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "load-grunt-tasks": "^5.0.0",
@@ -64,6 +66,7 @@
   "dependencies": {
     "angular": "^1.7.8",
     "copy-webpack-plugin": "^5.0.3",
+    "ejs": "^2.6.2",
     "jquery": "^3.4.1",
     "rxjs": "^6.5.2",
     "sui-mobile": "^0.5.9",

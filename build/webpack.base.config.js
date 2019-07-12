@@ -35,6 +35,10 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader'
       },
+      // {
+      //   test: /\.html(\?.*)?$/,
+      //   loader: 'html-loader'
+      // },
       {
         test: /\.ts(\?.*)?$/,
         exclude: /node_modules/,
@@ -57,7 +61,7 @@ module.exports = {
       {
         test: /\.(png|swf|gif|jpe?g)(\?.*)?$/,
         use: {
-          loader: 'file-loader',
+          loader: 'url-loader',
           options: {
             limit: 10000,
             name: utils.staticJoin('image/[name].[ext]')
