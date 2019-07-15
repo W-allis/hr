@@ -14,3 +14,23 @@ export function CompanyItem(data: { companyList: any[] }) {
   <% }); %>`, data)
 }
 
+export function SentimentItem(data: { sentimentList: any[] }) {
+  return ejs.render(`<% sentimentList.forEach(function(item, index){ %>
+    <a href="<%= item.url%>">
+      <div class="card wxp-sentiment-item">
+        <div class="card-content">
+          <div class="card-content-inner">
+            <p class="wxp-sentiment-title"><%= index%><%= item.title%></p>
+          </div>
+        </div>
+        
+        <div class="wxp-card-footer">
+          <a href="javascript: void(0)" class="link"><%= item.from%></a>
+          <a href="javascript: void(0)" class="link"><%= item.date%></a>
+        </div>
+      </div>
+    </a>
+  <% }); %>`, data)
+}
+
+

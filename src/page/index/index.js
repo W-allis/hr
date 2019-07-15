@@ -26,7 +26,7 @@ import placeholder1 from './assets/img/placeholder1.jpg'
 import placeholder2 from './assets/img/placeholder2.jpg'
 $('.swiper-lazy').prop('src', placeholder2)
 // 引入html模块
-import { CompanyItem } from './components'
+import { CompanyItem, SentimentItem } from './components'
 
 // 公司模块
 console.dir($)
@@ -67,10 +67,74 @@ $(function() {
 })
 // 列表模块
 $(function() {
-  $(document).on('pageInit', '#sentiment-list', function(e, pageId, $page) {
-    
-    getCompany()
+
+  let queryModel = {
+    pageNum: 1,
+    pageSize: 15,
+    company: getCompany() 
+  }
+
+  const sentimentList = [...Array(15).keys()].map(item => (
+    { url: 'http://www.baidu.com', title: '这是一个用纯文纯文纯文本的简单卡片。但卡片可以包含自己的页头，页脚，列表视图，图像，和里面的任何元素', from: '腾讯新闻', date: '2019/05/09' }
+  ))
+
+  const mockItem = { url: 'http://www.baidu.com', title: '这是一个用纯文纯文纯文本的简单卡片。但卡片可以包含自己的页头，页脚，列表视图，图像，和里面的任何元素', from: '腾讯新闻', date: '2019/05/09' }
+
+  function getSentimentList(queryModel) {
+    $('.wxp-sentiment-list').html(SentimentItem({
+      sentimentList: [...Array(queryModel.pageNum * queryModel.pageSize).keys()].map(item => mockItem)
+    }))
+  }
+
+  // 预加载（滑动翻页）
+  function preloadSentiment() {
+    var timer = false
+    return function() {
+
+      // 如果正在加载，则退出
+      clearTimeout(timer)
+      // 设置flag
+      // 模拟1s的加载过程
+      timer = setTimeout(function() {
+        // 加载完毕，则注销无限加载事件，以防不必要的加载
+        // $.detachInfiniteScroll($('.infinite-scroll'))
+        // // 删除加载提示符
+        // $('.infinite-scroll-preloader').remove()
+        // 添加新条目
+        queryModel.pageNum++
+        getSentimentList(queryModel)
+        //容器发生改变,如果是js滚动，需要刷新滚动
+        $.refreshScroller()
+      }, 1000)
+    }
+  }
+
+  // 页面初始化加载的数据
+  $(document).on('pageInit', '#sentiment-list', function(e, pageId, $page) { 
+    // 预加载条数
+    getSentimentList(queryModel)
+
+    // 注册'infinite'事件处理函数
+    $($page).on('infinite', preloadSentiment())
   })
+
+  // 下拉刷新
+  $(document).on('refresh', '.pull-to-refresh-content',function(e) {
+    // 模拟2s的加载过程
+    setTimeout(function() {
+      // 重置搜索条件
+      queryModel = {
+        pageNum: 1,
+        pageSize: 15,
+        company: getCompany()
+      }
+      getSentimentList(queryModel)
+
+      // 加载完毕需要重置
+      $.pullToRefreshDone('.pull-to-refresh-content')
+    }, 2000)
+  })
+
 })
 
 // 登录模块
