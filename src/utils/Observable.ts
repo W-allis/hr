@@ -39,26 +39,6 @@ class Operators {
   }
 }
 
-class Observe extends Operators {
-  
-  constructor() {
-    super()
-  }
-
-  lift() {
-    
-  }
-}
-
-class Observable {
-  constructor() { }
-
-  static from(args: any[]) {
-    return new Observe()
-  }
-
-}
-
 class SafeObserver {
 
   private destination: any
@@ -117,6 +97,22 @@ class OnSubscriber {
 
   }
 
+  
+}
+
+class Observe extends Operators {
+  
+  shecdule: any[] = []
+
+  constructor() {
+    super()
+  }
+
+  lift(shecdule: any) {
+    this.shecdule.push(shecdule)
+    return this
+  }
+
   subscribe(ObserverOrNext: Observer|Handler, error: Handler = EmptyFunction, complete: Handler = EmptyFunction) {
 
     const destination: Observer = { }
@@ -135,6 +131,15 @@ class OnSubscriber {
 
     return safeObserver
   }
+}
+
+class Observable {
+  constructor() { }
+
+  static from(args: any[]) {
+    return new Observe()
+  }
+
 }
 
 interface Subscriber {
