@@ -8,7 +8,19 @@ interface Handler {
 }
 
 const Headers = {
-  token: ''
+  token: '',
+  'content-type': 'application/json;charset=UTF-8'
+}
+
+function serialization(params: { [key: string]: any }): string {
+
+  if (Wx.type(params) !== 'object') return ''
+
+  const paramsKeys = Object.keys(params) 
+
+  if (!paramsKeys.length) return ''
+
+  return paramsKeys.reduce((total, curr, index): string => `${total}&${curr}=${params[curr]}`, '?')
 }
 
 class $Request {
@@ -34,8 +46,8 @@ class $Request {
       )
   }
 
-  get(url: string, options?: any) {
-    return ajax.get(url, Wx.merge(Headers, options))
+  get(url: string, data?: any, options?: any) {
+    return ajax.get(url + serialization(data), Wx.merge(Headers, options))
       .pipe(
         map(this.handleResponse),
         catchError(this.handleError)

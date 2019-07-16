@@ -37,7 +37,10 @@ module.exports = {
       },
       // {
       //   test: /\.html(\?.*)?$/,
-      //   loader: 'html-loader'
+      //   loader: 'html-loader',
+      //   options: {
+      //     attr: ['img:src']
+      //   }
       // },
       {
         test: /\.ts(\?.*)?$/,

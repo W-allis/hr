@@ -6,7 +6,8 @@ const utils = require('./utils')
 const config = require('../config') 
 
 module.exports = merge(base, {
-  mode: "development",
+  mode: 'development',
+  devtool: 'source-map',
   entry: utils.entries(),
   plugins: [
     new Webpack.DefinePlugin({

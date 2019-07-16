@@ -19,10 +19,28 @@ module.exports = {
           '^/api': ''
         },
       },
+      "/wxp_appid": {
+        target: "https://open.weixin.qq.com",
+        changeOrigin: false,
+        secure: false,
+        pathRewrite: { "^/appid": "" }
+      },
       "/sentiment": {
         target: "http://192.168.38.11:5000",
         changeOrigin: false,
         pathRewrite:{"^/sentiment":""}
+      },
+      "/qrcode": {
+        target: "https://cdn-qa.cunyingtech.com",
+        changeOrigin: true,
+        // secure: true,
+        pathRewrite:{"^/qrcode":""}
+      },
+      "https\:\/\/cdn-qa\.cunyingtech\.com": {
+        target: "https://cdn-qa.cunyingtech.com",
+        changeOrigin: true,
+        // secure: true,
+        pathRewrite:{"^https://cdn-qa.cunyingtech.com":""}
       },
     }
   },

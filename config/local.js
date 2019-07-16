@@ -1,0 +1,3 @@
+module.exports = {
+  'sentiment': '"/sentiment"'
+}

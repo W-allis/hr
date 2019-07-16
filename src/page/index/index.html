@@ -17,14 +17,14 @@
     <!-- page集合的容器，里面放多个平行的.page，其他.page作为内联页面由路由控制展示 -->
     <div class="page-group">
         <!-- 单个page ,第一个.page默认被展示-->
-        <div class="page" id="main">
-            <!-- 标题栏 -->
+        <!-- <div class="page" id="test">
+            标题栏
             <header class="bar bar-nav">
                 <a class="icon icon-me pull-left open-panel"></a>
                 <h1 class="title">标题</h1>
             </header>
 
-            <!-- 工具栏 -->
+            工具栏
             <nav class="bar bar-tab">
                 <a class="tab-item external active" href="#">
                     <span class="icon icon-home"></span>
@@ -40,11 +40,11 @@
                 </a>
             </nav>
 
-            <!-- 这里是页面内容区 -->
+            这里是页面内容区
             <div class="content">
                 <div class="content-block">这里是content</div>
             </div>
-        </div>
+        </div> -->
         <!-- 其他的单个page内联页（如果有） -->
         <!-- 舆情列表 -->
         <div class="page" id="sentiment-list">
@@ -78,17 +78,23 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="wxp-back_top">
+
+                </div>
             </div>
         </div>
 
         <!-- 公司展示列表 -->
-        <div class="page" id="company">
+        <div class="page" id="main">
             <div class="wxp-company-container">
                 <div class="swiper-container" data-space-between='10'>
                     <div class="swiper-wrapper">
                     
                         <div class="swiper-slide">
-                            <img class="swiper-lazy" src="./assets/img/placeholder.jpg" alt="">
+                            <!-- <img class="swiper-lazy" src="./assets/img/placeholder.jpg" alt=""> -->
+                            <!-- <img src="https://cdn-qa.cunyingtech.com/f6bfd48c1969ccc5a854cfd39fcdfb59/小赢钱包推荐图.jpg" alt=""> -->
+                            <img src="/qrcode/f6bfd48c1969ccc5a854cfd39fcdfb59/小赢钱包推荐图.jpg" alt="">
                             <!-- <img class="swiper-lazy" src="./assets/img/placeholder1.jpg" alt=""> -->
                             <!-- <div class="swiper-lazy-preloader swiper-lazy-preloader-white">
                                 <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4117458023,1897165912&fm=26&gp=0.jpg" alt="" srcset="">
@@ -102,38 +108,7 @@
                 <div class="wxp-companylist">
                     <!-- <div class="content-block-title">公司列表</div> -->
                     <div class="row">
-                        <div class="col-33">
-                            <div class="wxp-company-item">
-                                <div class="wxp-company-icon">
-                                    <img src="http://img4.imgtn.bdimg.com/it/u=130976137,2638160301&fm=26&gp=0.jpg" alt="" srcset="">
-                                </div>
-                                <span>百度公司</span> 
-                            </div>
-                        </div>
-                        <div class="col-33">
-                                <div class="wxp-company-item">
-                                    <div class="wxp-company-icon">
-                                        <img src="http://img4.imgtn.bdimg.com/it/u=130976137,2638160301&fm=26&gp=0.jpg" alt="" srcset="">
-                                    </div>
-                                    <span>百度公司</span> 
-                                </div>
-                            </div>
-                        <div class="col-33">
-                            <div class="wxp-company-item">
-                                <div class="wxp-company-icon">
-                                    <img src="http://img4.imgtn.bdimg.com/it/u=130976137,2638160301&fm=26&gp=0.jpg" alt="" srcset="">
-                                </div>
-                                <span>百度公司</span> 
-                            </div>
-                        </div>
-                        <div class="col-33">
-                            <div class="wxp-company-item">
-                                <div class="wxp-company-icon">
-                                    <img src="http://img4.imgtn.bdimg.com/it/u=130976137,2638160301&fm=26&gp=0.jpg" alt="" srcset="">
-                                </div>
-                                <span>百度公司</span> 
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -196,10 +171,9 @@
         </div>
     </div>
 
+    <!-- (div>button{$cs})*100 -->
     <script src="<%= htmlWebpackPlugin.options.path %>/plug/zepto.js"></script>
     <script src="<%= htmlWebpackPlugin.options.path %>/plug/sui-mobile.js"></script>
-    <!-- <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.js' charset='utf-8'></script>
-    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.js' charset='utf-8'></script> -->
     <script src="<%= htmlWebpackPlugin.options.path %>/plug/sui-mobile.extend.js"></script>
 </body>
 

@@ -1,7 +1,20 @@
 @searchBarHeight: 44px;
 
 .wxp-sentiment-container {
-  padding-top: @searchBarHeight;
+  margin-top: @searchBarHeight;
+  .searchbar {
+    .searchbar-active .searchbar-cancel+.search-input {
+      margin-right: 2em;
+    }
+    .searchbar-cancel {
+      font-size: 14px;
+      width: 3em;
+    }
+  }
+  .search-input {
+    input {
+    }
+  }
   .bar {
     position: fixed;
     padding: 0;
@@ -19,13 +32,21 @@
     top: 0;
   }
   .wxp-sentiment-list {
+    width: 100%;
+    overflow: hidden;
     .wxp-sentiment-item {
       box-shadow: none;
       border-bottom: 1px solid #ccc;
+      margin: 0;
+      margin-left: 10px; 
       margin-right: -10px;
-      padding-right: 10px;
+      padding: 10px;
+      padding-left: 0;
       &:nth-last-child(1) {
         border-bottom: none;
+      }
+      .card-content {
+        padding: 7px 0;
       }
     }
     a {
@@ -44,7 +65,7 @@
     padding: 10px 0;
   }
   .card-content-inner {
-    padding: 5px 15px;
+    padding: 0px 15px;
     font-weight: 700;
   }
   .wxp-card-footer {

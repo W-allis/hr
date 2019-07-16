@@ -9,6 +9,9 @@ import './style/index.less'
 // 设置进入页面校验时候含有token
 import './permission'
 
+// 引入backToTop
+import '@/components/backToTop'
+
 // 图片
 import yntrust from './assets/img/yntrust.png'
 import albb from './assets/img/albb.png'
@@ -28,8 +31,11 @@ $('.swiper-lazy').prop('src', placeholder2)
 // 引入html模块
 import { CompanyItem, SentimentItem } from './components'
 
+// api
+import { getCompanyList, getSentimentList } from '@/api/sentiment'
+import { Wx } from '../../utils'
+
 // 公司模块
-console.dir($)
 $(function() {
   // new $.Swiper('.swiper-container', {
   //   preloadImages: false,
@@ -44,6 +50,18 @@ $(function() {
   //   //   // el: '.swiper-pagination',
   //   // }
   // })
+  // 页面初始化加载的数据
+  $(document).on('pageInit', '#main', function(e, pageId, $page) { 
+
+    getCompanyList({ open_id: '123456' }).subscribe(res => {
+      // console.log(res)
+      // $('.wxp-companylist .row').html(CompanyItem({
+      //   companyList: res.data.map(item => {
+
+      //   })
+      // }))
+    })
+  })
 
   $('.wxp-companylist .row').html(CompanyItem({
     companyList: [
@@ -69,21 +87,30 @@ $(function() {
 $(function() {
 
   let queryModel = {
-    pageNum: 1,
-    pageSize: 15,
-    company: getCompany() 
+    page_number: 1,
+    page_size: 15,
+    open_id: '123456',
+    company_name: getCompany() 
   }
 
-  const sentimentList = [...Array(15).keys()].map(item => (
-    { url: 'http://www.baidu.com', title: '这是一个用纯文纯文纯文本的简单卡片。但卡片可以包含自己的页头，页脚，列表视图，图像，和里面的任何元素', from: '腾讯新闻', date: '2019/05/09' }
-  ))
+  let sentimentList = []
+
+  // const sentimentList = [...Array(15).keys()].map(item => (
+  //   { url: 'http://www.baidu.com', title: '这是一个用纯文纯文纯文本的简单卡片。但卡片可以包含自己的页头，页脚，列表视图，图像，和里面的任何元素', from: '腾讯新闻', date: '2019/05/09' }
+  // ))
 
   const mockItem = { url: 'http://www.baidu.com', title: '这是一个用纯文纯文纯文本的简单卡片。但卡片可以包含自己的页头，页脚，列表视图，图像，和里面的任何元素', from: '腾讯新闻', date: '2019/05/09' }
 
-  function getSentimentList(queryModel) {
-    $('.wxp-sentiment-list').html(SentimentItem({
-      sentimentList: [...Array(queryModel.pageNum * queryModel.pageSize).keys()].map(item => mockItem)
-    }))
+  function handleGetSentimentList(queryModel) {
+    getSentimentList(queryModel).subscribe(res => {
+
+      sentimentList = sentimentList.concat((res.data || []).map(item => ({ target_url: item.href, title: item.title, source: item.source, date: Wx.parseTime(new Date(item.date)) })))
+      console.log(sentimentList)
+      $('.wxp-sentiment-list').html(SentimentItem({
+        sentimentList
+      }))
+    })
+    
   }
 
   // 预加载（滑动翻页）
@@ -101,8 +128,8 @@ $(function() {
         // // 删除加载提示符
         // $('.infinite-scroll-preloader').remove()
         // 添加新条目
-        queryModel.pageNum++
-        getSentimentList(queryModel)
+        queryModel.page_number++
+        handleGetSentimentList(queryModel)
         //容器发生改变,如果是js滚动，需要刷新滚动
         $.refreshScroller()
       }, 1000)
@@ -111,8 +138,9 @@ $(function() {
 
   // 页面初始化加载的数据
   $(document).on('pageInit', '#sentiment-list', function(e, pageId, $page) { 
+    sentimentList = []
     // 预加载条数
-    getSentimentList(queryModel)
+    handleGetSentimentList(queryModel)
 
     // 注册'infinite'事件处理函数
     $($page).on('infinite', preloadSentiment())
@@ -124,11 +152,14 @@ $(function() {
     setTimeout(function() {
       // 重置搜索条件
       queryModel = {
-        pageNum: 1,
-        pageSize: 15,
-        company: getCompany()
+        page_number: 1,
+        page_size: 15,
+        open_id: '123456',
+        // company_name: getCompany()
+        company_name: "博信股份"
       }
-      getSentimentList(queryModel)
+      sentimentList = [] 
+      handleGetSentimentList(queryModel)
 
       // 加载完毕需要重置
       $.pullToRefreshDone('.pull-to-refresh-content')
@@ -142,7 +173,7 @@ $(function() {
   
   $('.wxp-login-btn').click(function() {
     setToken('12345')
-    $.router.load('#company')
+    $.router.load('#main')
   })
 
   // 设置使用sui的初始化，写在最后面

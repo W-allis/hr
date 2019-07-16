@@ -6,7 +6,7 @@ module.exports = {
     require("postcss-pxtorem")({
       rootValue: 20,
       unitPrecision: 5,
-      propList: ['*', '!border-width', '!border', '!letter-spacing'],
+      propList: ['*', '!border-width', '!border', '!letter-spacing', '!box-shadow'],
       selectorBlackList: [],
       replace: true,
       mediaQuery: false,

@@ -1,0 +1,13 @@
+.wxp-back_top {
+  position: fixed;
+  width: 30px;
+  height: 50px;
+  background: red;
+  right: 10px;
+  bottom: 20px;
+  transition: all 0.8s;
+}
+
+.wxp-back_top.wxp-distance_not_enough {
+  display: none;
+}
