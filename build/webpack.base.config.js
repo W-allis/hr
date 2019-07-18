@@ -62,7 +62,16 @@ module.exports = {
         loader: 'exports-loader?window.Zepto!script-loader'
       },
       {
-        test: /\.(png|swf|gif|jpe?g)(\?.*)?$/,
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+        include: path.resolve(__dirname, '../src/icon'),
+        options: {
+          symbolId: 'icon-[name]'
+        }
+      },
+      {
+        test: /\.(png|swf|gif|jpe?g|svg)(\?.*)?$/,
+        exclude: path.resolve(__dirname, '../src/icon'),
         use: {
           loader: 'url-loader',
           options: {

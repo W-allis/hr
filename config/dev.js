@@ -1,4 +1,5 @@
 module.exports = {
-  'sentiment': '"/sentiment"',
-  'qrcode': '"/qrcode"'
+  'sentiment': '"/wxpSentiment"',
+  'qrcode': '"/qrcode"',
+  'appid': '"/wxpAppid"'
 }

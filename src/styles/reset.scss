@@ -22,3 +22,8 @@ img {
     margin: 0;
   }
 }
+
+body {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}

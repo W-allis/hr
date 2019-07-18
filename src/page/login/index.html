@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录</title>
+
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.path %>/plug/sui-mobile.css">
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.path %>/plug/sui-mobile.extend.css">
+
+</head>
+
+<body>
+
+    <!-- page集合的容器，里面放多个平行的.page，其他.page作为内联页面由路由控制展示 -->
+    <div class="page-group">
+        <!-- page底下最好再次嵌套一个盒子，不然会有意想不到的bug -->
+        <div class="page" id="login">
+            <div class="wxp-login-container">
+              <div class="wxp-logo">
+                <img src="" alt="">
+              </div>
+
+              <div class="wxp-login-form">
+                  <div class="card wxp-card">
+                      <div class="card-content">
+                          <div class="card-content-inner">
+                              <div class="list-block">
+                                  <ul>
+                                      <li class="wxp-form-item">
+                                          <div class="item-content">
+                                              <div class="item-media">
+                                                  <svg class="wxp-icon" aria-hidden="true">
+                                                    <use xlink:href="#icon-mobile"></use>
+                                                  </svg>
+                                              </div>
+
+                                              <div class="wxp-help-clock">
+                                                <span class="wxp-mobile-error"></span>
+                                              </div>
+
+                                              <div class="item-inner">
+                                                  <div class="item-input">
+                                                      <input class="wxp-mobile wxp-form-item_input" data-rules="[{ required: true, message: '手机号不能为空', trigger: 'change' }, { pattern: /123456/, message: '手机号格式错误', trigger: 'change' }]" type="text" placeholder="请输入手机号码">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li class="wxp-form-item">
+                                          <div class="item-content">
+                                              <div class="item-media">
+                                                <svg class="wxp-icon" aria-hidden="true">
+                                                  <use xlink:href="#icon-password"></use>
+                                                </svg>
+                                              </div>
+                                              
+                                              <div class="item-inner">
+                                                  <div class="item-input">
+                                                      <input class="wxp-password wxp-form-item_input" data-rules="[{ required: true, message: '密码不能为空', trigger: 'change' }]" type="password" placeholder="请输入密码">
+                                                  </div>
+                                              </div>
+
+                                              <div class="wxp-help-clock">
+                                                <span class="wxp-password-error"></span>
+                                              </div>
+
+                                              <div class="item-media-right">
+                                                <svg class="wxp-icon wxp-show-password" aria-hidden="true">
+                                                  <use xlink:href="#icon-unvisible"></use>
+                                                </svg>
+                                                <svg class="wxp-icon wxp-hide-password hide" aria-hidden="true">
+                                                  <use xlink:href="#icon-visible"></use>
+                                                </svg>
+                                              </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="item-content button button-round wxp-login-click wxp-login">
+                                              <span class="wxp-login-btn">登录</span>
+                                          </div>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="wxp-login-bg">
+                <img src="" alt="">
+              </div>
+                <!-- <h2 class="wxp-title" style="letter-spacing: 10px">听风者</h2>
+
+                 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- (div>button{$cs})*100 -->
+    <script src="<%= htmlWebpackPlugin.options.path %>/plug/zepto.js"></script>
+    <script src="<%= htmlWebpackPlugin.options.path %>/plug/sui-mobile.js"></script>
+    <script src="<%= htmlWebpackPlugin.options.path %>/plug/sui-mobile.extend.js"></script>
+</body>
+
+</html>

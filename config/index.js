@@ -19,13 +19,13 @@ module.exports = {
           '^/api': ''
         },
       },
-      "/wxp_appid": {
-        target: "https://open.weixin.qq.com",
+      "/wxpAppid": {
+        target: "https://api.weixin.qq.com",
         changeOrigin: false,
         secure: false,
-        pathRewrite: { "^/appid": "" }
+        pathRewrite: { "^/wxpAppid": "" }
       },
-      "/sentiment": {
+      "/wxpSentiment": {
         target: "http://192.168.38.11:5000",
         changeOrigin: false,
         pathRewrite:{"^/sentiment":""}

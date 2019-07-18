@@ -1,0 +1,53 @@
+
+.wxp-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.hide {
+  display: none;
+}
+
+.wxp-form-item {
+  position: relative;
+}
+
+.wxp-help-clock {
+  color: red;
+  font-size: 11px;
+  position: absolute;
+  bottom: -17px;
+} 
+
+.wxp-notice-circle {
+  display: inline-block;
+  text-align: center;
+  width: 1.4em;
+  height: 1.4em;
+  font-size: 1em;
+  line-height: 1.4em;
+  border-radius: 0.7em;
+  color: #fff;
+  background: #DE3E44;
+}
+
+.wxp-yellow-circle {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #EAC144;
+  margin-right: 3px;
+}
+
+.wxp-green-circle {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #22B14C;
+  margin-right: 3px;
+}

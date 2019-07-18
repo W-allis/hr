@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>首页</title>
 
     <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.path %>/plug/sui-mobile.css">
     <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.path %>/plug/sui-mobile.extend.css">
@@ -45,118 +45,24 @@
                 <div class="content-block">这里是content</div>
             </div>
         </div> -->
-        <!-- 其他的单个page内联页（如果有） -->
-        <!-- 舆情列表 -->
-        <div class="page" id="sentiment-list">
 
-            <div class="wxp-sentiment-container">
-                <div class="bar">
-                    <div class="searchbar">
-                        <a class="searchbar-cancel">取消</a>
-                        <div class="search-input">
-                            <label class="icon icon-search" for="search"></label>
-                            <input type="search" id='search' placeholder='输入关键字...'/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="content pull-to-refresh-content" data-ptr-distance="55">
-                    <!-- 默认的下拉刷新层 -->
-                    <div class="pull-to-refresh-layer">
-                        <div class="preloader"></div>
-                        <div class="pull-to-refresh-arrow"></div>
-                    </div>
-                    <div class="wxp-semtiment-content">
-
-                        <div class="infinite-scroll infinite-scroll-bottom" data-distance="100">
-                            <div class="wxp-sentiment-list">
-                                
-                            </div>
-                            <div class="infinite-scroll-preloader">
-                                <div class="preloader"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="wxp-back_top">
-
-                </div>
-            </div>
-        </div>
 
         <!-- 公司展示列表 -->
         <div class="page" id="main">
             <div class="wxp-company-container">
-                <div class="swiper-container" data-space-between='10'>
-                    <div class="swiper-wrapper">
-                    
-                        <div class="swiper-slide">
-                            <!-- <img class="swiper-lazy" src="./assets/img/placeholder.jpg" alt=""> -->
-                            <!-- <img src="https://cdn-qa.cunyingtech.com/f6bfd48c1969ccc5a854cfd39fcdfb59/小赢钱包推荐图.jpg" alt=""> -->
-                            <img src="/qrcode/f6bfd48c1969ccc5a854cfd39fcdfb59/小赢钱包推荐图.jpg" alt="">
-                            <!-- <img class="swiper-lazy" src="./assets/img/placeholder1.jpg" alt=""> -->
-                            <!-- <div class="swiper-lazy-preloader swiper-lazy-preloader-white">
-                                <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4117458023,1897165912&fm=26&gp=0.jpg" alt="" srcset="">
-                            </div> -->
-                        </div>
-                    
-                        <!-- <div class="swiper-pagination"></div> -->
-                    </div>
+                <div class="wxp-company-bg">
+                    <img src="" alt="">
                 </div>
 
                 <div class="wxp-companylist">
                     <!-- <div class="content-block-title">公司列表</div> -->
-                    <div class="row">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- page底下最好再次嵌套一个盒子，不然会有意想不到的bug -->
-        <div class="page" id="login">
-            <div class="wxp-login-container">
-                <h2 class="wxp-title">Welcome</h2>
+                    
 
-                <div class="card wxp-card">
-                    <div class="card-content">
-                        <div class="card-content-inner">
-                            <div class="list-block">
-                                <ul>
-                                    <li>
-                                        <div class="item-content">
-                                            <div class="item-media"><i class="icon icon-form-name"></i></div>
-                                            <div class="item-inner">
-                                                <!-- <div class="item-title label"></div> -->
-                                                <div class="item-input">
-                                                    <input type="text" placeholder="手机号码">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="item-content">
-                                            <div class="item-media"><i class="icon icon-form-name"></i></div>
-                                            <div class="item-inner">
-                                                <!-- <div class="item-title label"></div> -->
-                                                <div class="item-input">
-                                                    <input type="password" placeholder="密码">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="item-content button button-round wxp-login-click">
-                                            <span class="wxp-login-btn">立即登录</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
+
     </div>
 
     <!-- popup, panel 等放在这里 -->

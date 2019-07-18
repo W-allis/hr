@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>舆情</title>
+
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.path %>/plug/sui-mobile.css">
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.path %>/plug/sui-mobile.extend.css">
+
+</head>
+
+<body>
+
+    <!-- page集合的容器，里面放多个平行的.page，其他.page作为内联页面由路由控制展示 -->
+    <div class="page-group">
+
+        <!-- 其他的单个page内联页（如果有） -->
+        <!-- 舆情列表 -->
+        <div class="page" id="sentiment-list">
+
+            <div class="wxp-sentiment-container">
+                <div class="bar">
+                    <div class="searchbar">
+                        <a class="searchbar-cancel">取消</a>
+                        <div class="search-input">
+                            <!-- <label class="icon icon-search" for="search"></label>
+                            <input type="text" placeholder='输入关键字...'/> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content pull-to-refresh-content" data-ptr-distance="55">
+                    <!-- 默认的下拉刷新层 -->
+                    <div class="pull-to-refresh-layer">
+                        <div class="preloader"></div>
+                        <div class="pull-to-refresh-arrow"></div>
+                    </div>
+                    <div class="wxp-sentiment-content">
+
+                        <div class="infinite-scroll infinite-scroll-bottom" data-distance="100">
+                            <div class="wxp-sentiment-list">
+                                
+                            </div>
+                            <div class="infinite-scroll-preloader">
+                                <div class="preloader"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="wxp-back_top">
+
+                </div> -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- (div>button{$cs})*100 -->
+    <script src="<%= htmlWebpackPlugin.options.path %>/plug/zepto.js"></script>
+    <script src="<%= htmlWebpackPlugin.options.path %>/plug/sui-mobile.js"></script>
+    <script src="<%= htmlWebpackPlugin.options.path %>/plug/sui-mobile.extend.js"></script>
+</body>
+
+</html>

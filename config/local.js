@@ -1,3 +1,4 @@
 module.exports = {
-  'sentiment': '"/sentiment"'
+  'sentiment': '"/wxpSentiment"',
+  'appid': '"/wxpAppid"'
 }

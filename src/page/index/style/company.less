@@ -13,11 +13,59 @@
   }
   .wxp-companylist {
     // padding: 0 15px;
-    margin-right: -1px;
+    // margin-right: -1px;
+    position: absolute;
+    top: 120px;
+    right: 0;
+    left: 0;
+    padding: 15px;
+    .card {
+      padding: 0 15px 10px;
+      border-radius: 7px;
+      margin-bottom: 20px;
+      .wxp-company-name {
+        font-weight: 700;
+      }
+      .wxp-sentiment-item {
+        font-size: 12px;
+        padding: 10px 0;
+        border-bottom: 0.5px solid #f2f2f2;
+        &:nth-last-child(1) {
+          border-bottom: none;
+        }
+      }
+      .wxp-sentiment-title {
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin-bottom: 5px;
+      }
+    }
+    .card-header {
+      padding: 10px 0;
+      font-size: 14px;
+    }
+    .card-content-inner {
+      padding: 0 0;
+    }
+    .wxp-sentiment-source {
+      font-weight: 700;
+    }
+    .wxp-sentiment-source, .wxp-sentiment-date {
+      color: #E4CAA9 !important;
+    }
+    .wxp-sentiment-date {
+      text-align: right;
+    }
   }
   .swiper-slide {
     max-height: 260px;
     overflow: hidden;
+    box-shadow: 5px 5px 8px -10px rgb(0, 0, 0);
+    // border-bottom: 0.5px solid #eee;
+    margin-bottom: 10px;
   }
   .wxp-company-item {
     padding: 15px 15px;
@@ -29,6 +77,14 @@
 
     .wxp-company-icon {
       padding: 12px 20px;
+    }
+    .wxp-company-name {
+      // max-height: 3em;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
   }
 }
