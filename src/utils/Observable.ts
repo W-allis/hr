@@ -1,4 +1,5 @@
 
+
 interface Handler {
   (): any|void
 }
@@ -15,9 +16,15 @@ const EmptyFunction: Handler = () => {}
 class Operators {
   map(shecdule) {
     // const $shecdule = new Observe()
+    if (typeof shecdule !== 'function') {
+      throw 'arguments[0] must be a function'
+    }
     
-    // $shecdule.lift(shecdule, this.$Obv)
+    // this.lift(shecdule)
+    return function mapOperatorFunction(source) {
 
+      return source.lift(shecdule)
+    }
     // return $shecdule
   }
 
@@ -53,7 +60,7 @@ class SafeObserver {
     console.log('i must be unsubscriber observable')
   }
 
-  private next() {
+  protected next() {
     if (!this.isUnsubscriber) {
       try {
         this.destination.next()
@@ -64,7 +71,7 @@ class SafeObserver {
     }
   }
 
-  private error() {
+  protected error() {
     if (!this.isUnsubscriber) {
 
       try {
@@ -77,7 +84,7 @@ class SafeObserver {
     }
   }
 
-  private complete() {
+  protected complete() {
     if (this.isUnsubscriber) {
       try {
         this.destination.complete()
@@ -90,6 +97,10 @@ class SafeObserver {
   }
 }
 
+class Subscription {
+
+}
+
 // subscriber 已经注册好，now 注册被观察对象
 class OnSubscriber {
   
@@ -100,6 +111,10 @@ class OnSubscriber {
   
 }
 
+// Observable 单播，
+// from of fromEvent 被观察者
+// Observer 观察者， 
+// Subject 多播
 class Observe extends Operators {
   
   shecdule: any[] = []
@@ -109,6 +124,7 @@ class Observe extends Operators {
   }
 
   lift(shecdule: any) {
+
     this.shecdule.push(shecdule)
     return this
   }
@@ -150,7 +166,9 @@ class Shecdule {
 
 }
 
-Observable.from([1, 2, 3])
+var ovser = Observable.from([1, 2, 3]).map(item => item + 1)
+
+console.log(ovser)
 
 // Observable.from([1, 2, 3, 4])
 //   .map(function(value) {
