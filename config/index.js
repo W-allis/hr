@@ -28,7 +28,7 @@ module.exports = {
       "/wxpSentiment": {
         target: "http://192.168.38.11:5000",
         changeOrigin: false,
-        pathRewrite:{"^/sentiment":""}
+        pathRewrite:{"^/wxpSentiment":""}
       },
       "/qrcode": {
         target: "https://cdn-qa.cunyingtech.com",
