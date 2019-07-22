@@ -11,7 +11,7 @@ import '@/utils/permission'
 // 引入backToTop
 import '@/components/backToTop'
 
-import placeholder2 from './assets/img/placeholder2.jpg'
+import placeholder2 from './assets/img/placeholder3.jpg'
 $('.wxp-company-bg img').prop('src', placeholder2)
 // 引入html模块
 import { CompanyItem } from '@/components/sentiment'
