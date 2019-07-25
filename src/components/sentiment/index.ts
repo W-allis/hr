@@ -40,8 +40,7 @@ export function CompanyItem(data: { companyList: any[] }) {
 
 export function SentimentItem(data: { sentimentList: any[] }) {
   return ejs.render(`<% sentimentList.forEach(function(item, index){ %>
-    <a href="<%= item.target_url%>">
-      <div class="card wxp-sentiment-item">
+      <div class="card wxp-sentiment-item <%= item.read && 'wxp-readed'%>" data-url="<%= item.target_url%>" data-id="<%= item.id%>" >
         <div class="card-content">
           <div class="card-content-inner">
             <span class="wxp-sentiment-title">
@@ -62,7 +61,6 @@ export function SentimentItem(data: { sentimentList: any[] }) {
           </div>
         </div>
       </div>
-    </a>
   <% }); %>`, data)
 }
 

@@ -1,8 +1,10 @@
-import { getSentimentList } from '@/api/sentiment'
+import { getSentimentList, postReadId } from '@/api/sentiment'
 import { Wx } from '../../utils'
 import { getToken } from '@/utils/user'
 
 import { getCompany } from '@/utils/company'
+
+import { getReadId, setReadId, deleteReadId } from './utils'
 
 // 当前页面css
 import '@/styles/index.scss'
@@ -12,6 +14,21 @@ import './style/index.less'
 import '@/utils/permission'
 
 import { SentimentItem } from '@/components/sentiment'
+$(function() {
+  // var page = (function () {
+
+  //   function SentimentPage() {
+  //     this.init()
+  //   }
+
+  //   SentimentPage.prototype.init = function() {
+      
+  //   }
+
+  //   new SentimentPage()
+
+  // })()
+})
 
 // 列表模块
 $(function() {
@@ -42,7 +59,7 @@ $(function() {
           return
         }
 
-        sentimentList = sentimentList.concat((res.data || []).map(item => ({ target_url: item.href, title: item.title, score: item.score, source: item.source, date: Wx.parseTime(new Date(item.date), '{y}/{m}/{d}') })))
+        sentimentList = sentimentList.concat((res.data || []).map(item => ({ target_url: item.href, title: item.title, score: item.score, source: item.source, date: Wx.parseTime(new Date(item.date), '{y}/{m}/{d}'), read: item.have_read, id: item.id })))
         // console.log(sentimentList)
         if (sentimentList.length >= res.total) {
           // 加载完毕，则注销无限加载事件，以防不必要的加载
@@ -132,6 +149,15 @@ $(function() {
     }, 500)
   })
 
+  // 注册跳转+已读事件
+  $('.wxp-sentiment-list').on('click', '.wxp-sentiment-item', function() {
+    
+    postReadId({
+      open_id: getToken(),
+      article_id_list: [$(this).data('id'), '']
+      }).subscribe(res => {})
+    // location.href = $(this).data('url')
+  })
 })
 
 // 登录模块
