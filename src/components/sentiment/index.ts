@@ -17,7 +17,7 @@ export function CompanyItem(data: { companyList: any[] }) {
         <div class="card-content-inner">
           <div class="wxp-sentiment-list">
           <% (item.sentiment_list || []).forEach(function(child){ %>
-            <div class="wxp-sentiment-item" data-url="<%= child.url%>">
+            <div class="wxp-sentiment-item <%= child.read && 'wxp-readed'%>" data-url="<%= child.url%>" data-id="<%= child.id%>" data-read="<%= child.read%>">
               <div class="wxp-sentiment-title">
                 <span class="wxp-<%= child.score >= -10 ? 'green' : 'yellow'%>-circle"></span><%= child.title%>
               </div>
@@ -40,7 +40,7 @@ export function CompanyItem(data: { companyList: any[] }) {
 
 export function SentimentItem(data: { sentimentList: any[] }) {
   return ejs.render(`<% sentimentList.forEach(function(item, index){ %>
-      <div class="card wxp-sentiment-item <%= item.read && 'wxp-readed'%>" data-url="<%= item.target_url%>" data-id="<%= item.id%>" >
+      <div class="card wxp-sentiment-item <%= item.read && 'wxp-readed'%>" data-url="<%= item.target_url%>" data-read="<%= item.read%>" data-id="<%= item.id%>" >
         <div class="card-content">
           <div class="card-content-inner">
             <span class="wxp-sentiment-title">

@@ -18,7 +18,7 @@ import { CompanyItem } from '@/components/sentiment'
 import { getToken } from '@/utils/user'
 
 // api
-import { getCompanyList } from '@/api/sentiment'
+import { getCompanyList, postReadId } from '@/api/sentiment'
 import { Wx } from '@/utils'
 
 // 公司模块
@@ -48,7 +48,7 @@ $(function() {
       }
       $('.wxp-companylist').html(CompanyItem({
         companyList: res.data.map(item => {
-          return { company_name: item.company_name, company_id: item.company_id, total: item.total, sentiment_list: item.sentiment_list.map(child => ({ title: child.title, source: child.source, score: child.score, date: Wx.parseTime(new Date(child.date), '{y}/{m}/{d}'), url: child.href })) }
+          return { company_name: item.company_name, company_id: item.company_id, total: item.total, sentiment_list: item.sentiment_list.map(child => ({ title: child.title, source: child.source, score: child.score, date: Wx.parseTime(new Date(child.date), '{y}/{m}/{d}'), url: child.href, read: child.have_read, id: child.id })) }
         })
       }))
     })
@@ -60,6 +60,13 @@ $(function() {
     })
     $('.wxp-companylist').on('click', '.wxp-sentiment-item', function() {
       // $.router.load('#sentiment-list')
+      if (!$(this).data('read')) {
+  
+        postReadId({
+          open_id: getToken(),
+          article_id_list: `[${$(this).data('id')}]`
+        }).subscribe(res => {})
+      }
       location.href = $(this).data('url')
     })
   })

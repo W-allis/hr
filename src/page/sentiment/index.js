@@ -151,12 +151,15 @@ $(function() {
 
   // 注册跳转+已读事件
   $('.wxp-sentiment-list').on('click', '.wxp-sentiment-item', function() {
-    
-    postReadId({
-      open_id: getToken(),
-      article_id_list: [$(this).data('id'), '']
+    if (!$(this).data('read')) {
+
+      postReadId({
+        open_id: getToken(),
+        article_id_list: `[${$(this).data('id')}]`
       }).subscribe(res => {})
-    // location.href = $(this).data('url')
+    }
+    
+    location.href = $(this).data('url')
   })
 })
 
