@@ -1,4 +1,9 @@
 {
+  "parserOptions": {
+    "ecmaFeatures": {
+      "legacyDecorators": true
+    }
+  },
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
