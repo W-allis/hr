@@ -62,5 +62,18 @@ namespace VDom {
 }
 
 namespace Analyser_Node {
+  var str_dom = `<template>
+    <div class="form">
+      <form action="javascript: void(0)">
+        
+      </form>
+    </div>
+  </template>`
 
+  var fragment = document.createDocumentFragment()
+  // var str_reg = /<(?:[^"'>]|(["'])[^"']*\1)*>/g
+  // var str_reg = /<(?:[^"'>]|"[^"]*"|'[^']*')*>/g;
+  var str_reg = /<\/?(.*)+(\s+[a-zA-Z]+=".*")*>/g;
+  console.dir(str_dom.match(str_reg))
+  console.dir(str_reg.exec(str_dom))
 }
