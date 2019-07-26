@@ -35,10 +35,10 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader'
       },
-      // {
-      //   test: /\.html(\?.*)?$/,
-      //   loader: 'html-loader'
-      // },
+      {
+        test: /\.html(\?.*)?$/,
+        loader: 'raw-loader'
+      },
       {
         test: /\.ts(\?.*)?$/,
         exclude: /node_modules/,
