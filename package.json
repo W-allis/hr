@@ -71,6 +71,7 @@
     "copy-webpack-plugin": "^5.0.3",
     "ejs": "^2.6.2",
     "jquery": "^3.4.1",
+    "parse5": "^5.1.0",
     "rxjs": "^6.5.2",
     "sui-mobile": "^0.5.9",
     "vue": "^2.6.10",

@@ -9,8 +9,8 @@ export class NgFormComponent {
 }
 
 const template = require('./index.html')
-  console.log(template.default)
 
-function VirtrolDom(template) {
+import { generaterAstDom } from '@/utils/vdom'
+import { parse } from 'parse5'
 
-}
+console.log(generaterAstDom(parse(template.default).childNodes[0].childNodes[1].childNodes[0]))
