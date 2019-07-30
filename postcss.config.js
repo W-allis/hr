@@ -7,7 +7,7 @@ module.exports = {
       rootValue: 20,
       unitPrecision: 5,
       propList: ['*', '!border-width', '!border', '!letter-spacing', '!box-shadow'],
-      selectorBlackList: [],
+      selectorBlackList: ['cube-ui'],
       replace: true,
       mediaQuery: false,
       minPixelValue: 0

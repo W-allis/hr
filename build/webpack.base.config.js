@@ -1,6 +1,8 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const PostCompilePlugin = require('webpack-post-compile-plugin')
+const TransformModulesPlugin = require('webpack-transform-modules-plugin')
 
 const config = require('../config')
 const utils = require('./utils')
@@ -20,6 +22,7 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js', '.vue', 'json'],
     alias: {
+      'cube-ui': 'cube-ui/lib',
       'vue$': 'vue/dist/vue.esm.js',
       '@': path.resolve(__dirname, '../src')
     }
@@ -109,6 +112,8 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
+    // new PostCompilePlugin(),
+    new TransformModulesPlugin(),
     new CopyWebpackPlugin([{
       from: path.resolve(__dirname, '../assets'),
       to: config.dev.staticPath,

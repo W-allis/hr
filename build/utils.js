@@ -53,11 +53,18 @@ const rulesCollection = function(options) {
     }), output) : output
   }
 
+  const stylusOptions = {
+    'resolve url': true
+  }
+
   return {
     css: doJob(),
+    postcss: doJob(),
     less: doJob('less'),
     scss: doJob('sass'),
-    sass: doJob('sass', { indentedSyntax: true })
+    sass: doJob('sass', { indentedSyntax: true }),
+    stylus: doJob('stylus', stylusOptions),
+    styl: doJob('stylus', stylusOptions)
   }
 }
 
