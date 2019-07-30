@@ -9,6 +9,8 @@ import { Validate } from '@/utils/Validate'
 
 import '@/app.module'
 
+import '@/utils/request_ax'
+
 const page = (function() {
 
   function Page() {
