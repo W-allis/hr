@@ -2,6 +2,7 @@
   <div>
     <!-- <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562142702402&di=53e5b6f08fa2ce613c3eada8adc32adf&imgtype=0&src=http%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2Fl46vyRPTiitlKyta0nVFx41wKfK.jpg" alt="" srcset=""> -->
     <button v-throttle="1000" @click="handleClick()">ceshi</button>  
+    <div v-text="value"></div>
   </div>
 </template>
 
@@ -35,7 +36,8 @@ export default {
   },
   data() {
     return {
-      disabled: false
+      disabled: false,
+      value: '12\n34'
     }
   },
   methods: {

@@ -1,115 +1,133 @@
 import axios from 'axios'
-import { mixins } from './mixin'
+import { mixins, bind, deepMerge } from './mixin'
+
+interface T {
+  (any): any
+  request(...args: any): any
+}
 
 function type(param) {
   return Object.prototype.toString.call(param).slice(8, -1).toLowerCase()
 }
 
-function safeSheduler(sheduler) {
-  if (type(sheduler) !== 'function') throw 'sheduler must be a function'
+namespace wallis {
+  class $Cancel {
 
-  return function wrap() {
-    return new Promise((resolve, reject) => {
-      const result = sheduler()
+    source
 
-      if (type(sheduler) === 'promise') {
-        result.then(resolve)
-      } else {
-        resolve(result)
-      }
-    })
-  }
-}
-
-abstract class Use {
-  abstract use(): void
-}
-
-class InterceptorsRequest implements Use {
-  private sheduler = []
-  use(...args): void {
-    this.sheduler.unshift(...args.map(item => safeSheduler(item)))
-  }
-}
-
-class InterceptorsResponse implements Use {
-  private sheduler = []
-  use(...args): void {
-    this.sheduler.push(...args.map(item => safeSheduler(item)))
-  }
-}
-
-const $A = (function() {
-
-  // 构造函数
-  function Request() {
-  }
-
-  const D = (function () {
-    function _() {
-
+    constructor() {
+      var CancelToken = axios.CancelToken
+      console.log(CancelToken.source())
+      this.source = CancelToken.source()
     }
-    _.prototype = axios
-
-    return _
-  })()
-
-  // 将axios原型挂载到Request原型的原型上
-  Request.prototype = new D()
-
-  Request.prototype.interceptors = {
-    request: new InterceptorsRequest(),
-    response: new InterceptorsResponse()
   }
 
-  Request.prototype.create = function(options) {
-    const request = axios.create(options)
-    return this
+  class Request {
+
+    private sheduler = []
+    private source
+
+    constructor() {
+      mixins(Promise.prototype, Request.prototype, this)
+    }
+
+    ajax(options) {
+
+      const cancel = new $Cancel()
+      console.log(cancel)
+      // this.source = cancel.source
+
+      // options = deepMerge(options, { cancelToken: this.source.token })
+
+      return new Promise((resolve, reject) => {
+        Promise.all(this.sheduler.map(item => item(options))).then(config => {
+          axios(options).then(resolve)
+        })
+      })
+
+      // return result
+    }
+
+    cancel() {
+      if (this.source) {
+        console.log(this.source)
+        this.source.cancel()
+      }
+    }
+
+    create(options) {
+      axios.create(options)
+      return this
+    }
+
+
+    // interceptors() {
+    //   return {
+    request(...args) {
+      console.log(arguments)
+      this.sheduler.push(...args.map(item => this.safeSheduler(item)))
+    } 
+    //   }
+    // }
+
+    private safeSheduler(sheduler) {
+      if (type(sheduler) !== 'function') throw 'sheduler must be a function'
+    
+      return function wrap(config) {
+        return new Promise((resolve, reject) => {
+          const result = sheduler(config)
+    
+          if (type(sheduler) === 'promise') {
+            result.then(resolve)
+          } else {
+            resolve(result)
+          }
+        })
+      }
+    }
   }
 
-  const request = new Request()
-  function ajax() {
+  function createInstance() {
+    const request = new Request()
 
+    const instance = bind(Request.prototype.ajax, request)
+
+    mixins(instance, Request.prototype, request)
+    return instance
   }
 
-  return request
+  const request = createInstance() as T
 
-})()
+  request.request(function(config) {
+    config.headers = {}
+    config.headers.token = 6542
+    return config
+  })
 
-// const request = $A.create({
-//   timeout: 6000
-// })
+  var a = request({
+    url: '1234',
+    method: 'get'
+  }).then(res => {
+    console.log(res)
+  }).catch(error => {
+    console.log(error)
+  })
+  console.log(a)
+  a.cancel('取消ajax')
 
-function request() {
+  var CancelToken = axios.CancelToken;
+  var source = CancelToken.source();
+  console.log(source)
+  axios({
+      method:"GET",
+      url:"https://api.github.com/",
+      cancelToken:source.token
+  }).then((res) => {
+      console.log(res.data);
+  }).catch((err) => {
+    console.log(err);
+  })
+  source.cancel('取消ajax')
+
 
 }
-
-
-console.dir(request)
-console.dir(axios)
-// request.interceptors.request.use(function(config) {
-//   return new Promise(resolve => {
-//     setTimeout(function() {
-//       resolve(30000)
-//     }, 5000)
-//   })
-// }, function(config) {
-//   return config
-// })
-
-// request.interceptors.response.use(function(config) {
-//   return new Promise(resolve => {
-//     setTimeout(function() {
-//       resolve(30000)
-//     }, 5000)
-//   })
-// }, function(config) {
-//   return config
-// })
-
-// console.dir(axios)
-
-// request({
-//   url: '1234',
-//   method: 'get'
-// })
