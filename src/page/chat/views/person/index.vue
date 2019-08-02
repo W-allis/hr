@@ -1,5 +1,7 @@
 <template>
-  
+  <div class="hr-person-container">
+    
+  </div>
 </template>
 
 <script>

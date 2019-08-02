@@ -56,6 +56,8 @@
     "scss": "^0.2.4",
     "scss-loader": "0.0.1",
     "style-loader": "^0.23.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^2.1.1",
     "svg-sprite-loader": "^4.1.6",
     "time-grunt": "^2.0.0",
     "ts-loader": "^6.0.4",
@@ -69,8 +71,6 @@
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2",
     "webpack-merge": "^4.2.1",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^2.1.1",
     "webpack-post-compile-plugin": "^1.0.0",
     "webpack-transform-modules-plugin": "^0.4.3"
   },

@@ -13,6 +13,7 @@ export default {
 <style>
   .hr-app-container {
     font-size: 12px;
+    height: 100%;
   }
 </style>
 

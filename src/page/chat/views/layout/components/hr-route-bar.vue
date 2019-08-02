@@ -2,8 +2,10 @@
   <div class="hr-route-bar-container">
     <cube-tab-bar
       v-model="defaultRoute"
-      :data="asyncRoutes"
       @click="routeClick">
+      <cube-tab v-for="(item, index) in asyncRoutes" :label="item.label" :value="item.path" :key="index">
+        {{item.label}}
+      </cube-tab>
     </cube-tab-bar>
   </div>
 </template>
@@ -12,17 +14,18 @@
 export default {
   data: function() {
     return {
-      defaultRoute: '',
+      defaultRoute: '首页',
       asyncRoutes: [
-        { label: '首页' },
-        { label: '宣讲会' },
-        { label: '个人中心' },
+        { label: '首页', path: '/degree' },
+        { label: '宣讲会', path: '/teach-in' },
+        { label: '个人中心', path: '/person' },
       ]
     }
   },
   methods: {
-    routeClick(label) {
-      console.log(label)
+    routeClick(path) {
+      // console.log(label)
+      this.$router.push(path)
     }
   }
 }
@@ -31,14 +34,16 @@ export default {
 <style lang="less" scoped>
   @import '../../../style/variable.less';
   .hr-route-bar-container {
-    height: @routebar-hegiht;
-    line-height: @routebar-hegiht;
+    height: @routebar-height;
+    line-height: @routebar-height;
     position: fixed;
     bottom: 0;
     right: 0;
     left: 0;
     box-shadow: 0px 5px 5px 1px rgba(0, 0, 0, .5);
     font-size: 11px;
+    background: #fff;
+    z-index: 999;
   }
   
 </style>

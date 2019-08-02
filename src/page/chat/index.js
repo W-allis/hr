@@ -5,6 +5,8 @@ import Cube from 'cube-ui'
 
 Vue.use(Cube)
 
+import './components'
+
 import router from './router'
 
 import App from './home/app'
