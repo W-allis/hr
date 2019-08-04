@@ -1,12 +1,12 @@
 <template>
   <div class="hr-teach-in-container">
     <div class="hr-teach-in-search">
-      <hr-search-tab v-model="searchTab" :contentstyle="{ padding: '0' }" @after-click="afterTabClick">
+      <hr-search-tab v-model="searchTab" :contentstyle="{ padding: '0' }" @after-tab-click="afterTabClick">
         <hr-search-tab-item v-for="(tab, index) in searchtabList" :key="index" :tab-name="tab.name"></hr-search-tab-item>
       </hr-search-tab>
     </div>
     <div class="hr-teach-in-list">
-      <hr-card v-for="(teachin, index) in teachInList" :key="index" :tagstyle="{ color: '#9c9da5', background: 'transparent' }" :title="teachin.school" :hide-tag="false" :tag="teachin.intro">
+      <hr-card v-for="(teachin, index) in teachInList" :key="index" :tagstyle="{ color: '#9c9da5', background: 'transparent' }" :title="teachin.school" :hide-tag="false" :tag="teachin.intro" @click.native="afterCardClick(degree.title)">
         <template v-slot:operator>
           <span >{{teachin.company}}</span>
         </template>
@@ -25,9 +25,10 @@
 
 <script>
 import searchMixin from '../mixins/hr-search-tab'
+import degreeDetailsMixin from '../mixins/hr-degree-details'
 
 export default {
-  mixins: [searchMixin],
+  mixins: [searchMixin, degreeDetailsMixin],
   data() {
     return {
       teachInList: [...Array(20).keys()].map(item => ({ school: '哈佛大学', time: '03月19日 周二', position: '13:00~15:00', company: '云南信托', location: '中国', intro: '专场介绍' })),

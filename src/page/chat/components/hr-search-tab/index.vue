@@ -7,7 +7,7 @@
         </template>
       </hr-search-tab-nav>
     </div>
-    <div class="hr-search-tab-content" :style="contentstyle">
+    <div class="hr-search-tab-content" :style="contentstyle" v-show="!hideContent">
       <slot></slot>
     </div>
   </div>
@@ -63,7 +63,7 @@ export default {
 
 <style scoped>
   .hr-search-tab-container {
-    box-shadow: 0 4px 13px 0 rgba(110, 119, 139, .14);
+    /* box-shadow: 0 4px 13px 0 rgba(110, 119, 139, .14); */
     z-index: 999;
     position: relative;
   }
@@ -74,7 +74,7 @@ export default {
     top: 0;
     left: 0;
     z-index: 1002;
-    background: #fff;
+    /* background: #fff; */
     /* margin-bottom: 2px; */
   }
   .hr-search-tab-content {

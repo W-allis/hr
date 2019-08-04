@@ -19,7 +19,8 @@ const routes = [
   { path: '/teach-in', component: Layout, children: [
     { path: '', component: _import('teach-in/index') }
   ] },
-  { path: '/search', component: _import('search/index') }
+  { path: '/search', component: _import('search/index') },
+  { path: '/details', component: _import('details/index') }
 ]
 
 export default new VueRouter({

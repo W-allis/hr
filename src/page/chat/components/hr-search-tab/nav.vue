@@ -21,7 +21,7 @@ export default {
   methods: {
     handleTabClick(value) {
       this.$parent.$emit('update:value', value)
-      this.$parent.$emit('after-click', value)
+      this.$parent.$emit('after-tab-click', value)
     }
   },
   computed: {
@@ -39,6 +39,7 @@ export default {
     display: flex;
     text-align: center;
     padding: 15px 0;
+    background: transparent;
   }
   .hr-search-tab-nav {
     display: inline-block;

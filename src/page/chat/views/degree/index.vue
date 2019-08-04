@@ -7,10 +7,10 @@
           <i class="cubeic-search"></i>
         </template>
       </hr-input>
-      <hr-search-tab v-model="searchTab" :initstyle="{ background: 'transparent', color: '#fff' }" :contentstyle="{ padding: '0' }" @after-click="afterTabClick">
+      <hr-search-tab v-model="searchTab" :initstyle="{ background: 'transparent', color: '#fff' }" :contentstyle="{ padding: '0' }" @after-tab-click="afterTabClick">
         <hr-search-tab-item v-for="(tab, index) in searchtabList" :key="index" :tab-name="tab.name" :iconstyle="{ color: '#fff' }"></hr-search-tab-item>
       </hr-search-tab>
-      <hr-card v-for="(degree, index) in degreeList" :key="index" :title="degree.title" :hide-tag="!degree.isInternship" :tag="'实习生'">
+      <hr-card v-for="(degree, index) in degreeList" :key="index" :title="degree.title" :hide-tag="!degree.isInternship" :tag="'实习生'" @click.native="afterCardClick(degree.title)">
         <template v-slot:operator>
           <span >{{degree.type}}</span>
         </template>
@@ -27,12 +27,13 @@
 
 <script>
 import searchMixin from '../mixins/hr-search-tab'
+import degreeMixin from '../mixins/hr-search-list'
+import degreeDetailsMixin from '../mixins/hr-degree-details'
 
 export default {
-  mixins: [searchMixin],
+  mixins: [searchMixin, degreeMixin, degreeDetailsMixin],
   data() {
     return {
-      degreeList: [...Array(20).keys()].map(item => ({ title: 'web前端开发工程师', department: '信息科技部', type: '营销类', isInternship: [true, false][Math.round(Math.random())], jobCity: '上海' })),
     }
   },
   mounted() {

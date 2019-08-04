@@ -14,15 +14,20 @@
             </slot>
           </template>
         </div>
-        <div class="hr-card-header-operator overflowtext">
+        <div class="hr-card-header-operator overflowtext" v-if="!hideOperator">
           <slot name="operator">
             <i :class="icon" @click="handleOpeartor"></i>  
           </slot>
         </div>
       </div>        
-      <div class="hr-card-body">
+      <div class="hr-card-body" :style="bodystyle">
         <slot>
           {{content}}
+        </slot>
+      </div>
+      <div class="hr-card-footer">
+        <slot name="footer">
+
         </slot>
       </div>
     </div>
@@ -50,7 +55,12 @@ export default {
       type: Boolean,
       default: false
     },
-    tagstyle: {}
+    tagstyle: {},
+    bodystyle: {},
+    hideOperator: {
+      type: Boolean,
+      default: false
+    }
   },
   methods: {
     handleOpeartor() {

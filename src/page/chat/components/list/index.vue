@@ -2,7 +2,7 @@
   <div class="hr-list-container">
     <div class="hr-list-content">
       <template v-for="(item, index) in filterData(data, 'string')">
-        <div :key="index" class="hr-list-item overflowtext">
+        <div :key="index" class="hr-list-item overflowtext" @click="handleChange(item)">
           {{item.label}}
         </div>
       </template>
@@ -13,7 +13,7 @@
         <div class="hr-list-group-title" v-if="item.label">
           {{item.label}}
         </div>
-        <hr-list :data="item.value"></hr-list>
+        <hr-list @after-change="handleListClick" :data="item.value"></hr-list>
     </div>
 
   </div>
@@ -36,8 +36,11 @@ export default {
     filterData(data, type) {
       return data.filter(item => Object.prototype.toString.call(item.value).slice(8, -1).toLowerCase() === type)
     },
-    handleChange() {
-      this.$emit('after-change', this.value)
+    handleListClick(value) {
+      this.$emit('after-change', value)
+    },
+    handleChange(value) {
+      this.$emit('after-change', value)
     }
   }
 }
