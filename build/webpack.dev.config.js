@@ -30,7 +30,7 @@ module.exports = merge(base, {
   },
   devServer: {
     contentBase: config.dev.outputPath,
-    port: 9529,
+    port: 9527,
     proxy: config.dev.proxyTable
   }
 })
